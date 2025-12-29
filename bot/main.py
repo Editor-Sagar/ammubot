@@ -1,17 +1,25 @@
-import sys
+import asyncio
+from pyrogram import Client
+from bot.router import handle_message
 import os
 
-# Add project root to PYTHONPATH
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-from bot.router import handle_message
-from pyrogram import Client
-
-app = Client("ammu_bot")
+app = Client(
+    "ammu_bot",
+    bot_token=BOT_TOKEN
+)
 
 @app.on_message()
-def main_handler(client, message):
-    handle_message(client, message)
+async def handle(client, message):
+    await handle_message(client, message)
 
-def main():
-    app.run()
+
+async def main():
+    await app.start()
+    print("🤖 Bot started successfully")
+    await idle()
+
+if __name__ == "__main__":
+    from pyrogram import idle
+    asyncio.run(main())
