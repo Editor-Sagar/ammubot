@@ -1,10 +1,11 @@
-from pyrogram import Client, filters
+from pyrogram import Client
 from bot.router import handle_message
 
-app = Client("ammu_bot", bot_token=os.getenv("BOT_TOKEN"))
+app = Client("ammu_bot")
 
-@app.on_message(filters.text)
-def main(client, message):
+@app.on_message()
+def main_handler(client, message):
     handle_message(client, message)
 
-app.run()
+def main():
+    app.run()
