@@ -1,0 +1,39 @@
+{
+  "name": "Ammu Telegram Bot",
+  "description": "A friendly AI-powered Telegram bot with moderation, replies, and auto-responses.",
+  "repository": "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME",
+  "logo": "https://telegram.org/img/t_logo.png",
+  "keywords": [
+    "telegram",
+    "bot",
+    "python",
+    "ai",
+    "chatbot",
+    "automation"
+  ],
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Telegram Bot Token from @BotFather",
+      "required": true
+    },
+    "OPENAI_API_KEY": {
+      "description": "OpenAI API Key (optional if AI replies enabled)",
+      "required": false
+    },
+    "OWNER_ID": {
+      "description": "Telegram User ID of bot owner",
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}
