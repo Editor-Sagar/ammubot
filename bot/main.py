@@ -1,5 +1,11 @@
-from pyrogram import Client
+import sys
+import os
+
+# Add project root to PYTHONPATH
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from bot.router import handle_message
+from pyrogram import Client
 
 app = Client("ammu_bot")
 
